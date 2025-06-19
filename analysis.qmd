@@ -1,5 +1,37 @@
 ---
-title: "Untitled"
+title: "A Beautiful Graphic"
+author: Annus Haider
 format: html
+execute:
+  echo: false
 ---
 
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+
+```{r}
+# Beautiful scatter plot using ggplot2 and the mpg dataset
+ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point(size = 3, alpha = 0.7) +
+  geom_smooth(method = "loess", se = FALSE, color = "black", linetype = "dashed") +
+  scale_color_viridis_d() +
+  labs(
+    title = "Engine Displacement vs. Highway MPG",
+    subtitle = "Grouped by Vehicle Class",
+    x = "Displacement (liters)",
+    y = "Highway MPG",
+    color = "Car Class",
+    caption = "Source: ggplot2 mpg dataset"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "right",
+    panel.grid.major = element_line(color = "grey80"),
+    panel.grid.minor = element_blank()
+  )
+
+```
